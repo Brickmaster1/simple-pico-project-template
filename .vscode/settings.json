@@ -37,6 +37,6 @@
     "raspberry-pi-pico.cmakePath": "${HOME}/.pico-sdk/cmake/v3.28.6/bin/cmake",
     "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja",
     "clangd.arguments": [
-        "--query-driver=${PICO_TOOLCHAIN_PATH}/bin/arm-none-eabi-g++,${PICO_TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc"
+        "--query-driver=${userHome}/.pico-sdk/toolchain/13_2_Rel1/bin/arm-none-eabi-g++,${userHome}/.pico-sdk/toolchain/13_2_Rel1/bin/arm-none-eabi-gcc"
     ]
 }
