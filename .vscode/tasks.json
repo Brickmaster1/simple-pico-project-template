@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Project",
+            "type": "process",
+            "isBuildCommand": true,
+            "command": "${userHome}/.pico-sdk/ninja/v1.12.1/ninja",
+            "args": ["-C", "${workspaceFolder}/build"],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": "$gcc",
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/ninja/v1.12.1/ninja.exe"
+            }
+        },
+        {
+            "label": "Flash",
+            "type": "process",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "interface/raspberrypi-swd.cfg",
+                "-f",
+                "target/rp2040.cfg",
+                "-c",
+                "adapter speed 5000; program \"${command:raspberry-pi-pico.launchTargetPath}\" verify reset exit"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "openocd",
+            }
+        },
+        {
+            "label": "UART Output",
+            "type": "process",
+            "command": "minicom",
+            "args": [
+                "-b",
+                "115200",
+                "-o",
+                "-D",
+                "/dev/serial0"
+            ],
+            "problemMatcher": [],
+            "windows": {
+                "command": "minicom",
+            }
+        }
+    ]
+}
